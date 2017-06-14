@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     public function role()	{
-        return $this->hasOne('App\Role','id','role_id');
+        return $this->belongsTo('App\Role','role_id','id');
     }
 
 
@@ -37,7 +37,7 @@ class User extends Authenticatable
     {
         if(is_string($role))
         {
-            return $this->role->where('slug', $role)->count() > 0;
+            return ($this->role->slug == $role ? true : false);
         }
         return $this->role_id == $role;
     }
