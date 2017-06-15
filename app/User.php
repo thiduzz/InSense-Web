@@ -32,6 +32,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role','role_id','id');
     }
 
+    public function devices()	{
+        return $this->hasMany('App\Device');
+    }
+
 
     public function hasRole($role)
     {
