@@ -83,9 +83,11 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/docs') }}">Documentação</a>
+                    <a href="{{ url('/tcc/docs') }}">Documentação Projeto</a>
+                    <a href="{{ url('/api/docs') }}">Documentação API</a>
                     <a href="{{ url('/equipe') }}">Equipe</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://github.com/thiduzz/InSense-Web">GitHub - Web</a>
+                    <a href="https://github.com/thiduzz/InSense-Mobile">GitHub - Mobile</a>
                 </div>
             </div>
         </div>

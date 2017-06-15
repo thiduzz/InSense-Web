@@ -1,0 +1,118 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "InSense API",
+        "description": "OAuth API para o App InSense.<br><br>Esta API atualmente \u00e9 somente acess\u00edvel para o aplicativo Android InSense<br><h2>Integrantes:</h2><ul><li>Thiago Mello</li><li>Rafael Tschannerl</li><li>Matheus Costa Vieira</li></ul>",
+        "contact": {
+            "name": "Thiago Mello",
+            "url": "http://insense.vizad.com.br",
+            "email": "thiago.mello@vizad.com.br"
+        },
+        "license": {
+            "name": "InSense Ltda - ME"
+        },
+        "version": "1.0.0"
+    },
+    "host": "insense.vizad.com.br",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/oauth/token": {
+            "post": {
+                "tags": [
+                    "OAuth"
+                ],
+                "summary": "Request Access Token",
+                "description": "<h2>Chamada para solicitar o primeiro acesso</h2> <p>Voc\u00ea deve enviar como form-data alguns dados para obter um access_token e refresh_token.<br><b>Exemplo:<br> http://api.cetac.vizad.com.br/oauth/token</b><br>Tempo de validade do Access Token: 7 dias<br>Tempo de validade do Token de Atualiza\u00e7\u00e3o: 15 dias<br>Para ter um novo access token depois do inicial, por quest\u00f5es de seguran\u00e7a, \u00e9 recomendado usar o 'refresh_token' em vez de 'username' e 'password'.</p><br>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "ID for the client (Each application should have one)",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "description": "Secret for the client (Request to the system admin)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "grant_type",
+                        "in": "formData",
+                        "description": "If first access pick 'password', if needs to refresh the access token pick 'refresh_token'",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "password",
+                            "refresh_token"
+                        ]
+                    },
+                    {
+                        "name": "refresh_token",
+                        "in": "formData",
+                        "description": "A not expired and valid refresh token (mandatory if grant_type = 'refresh_token')",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "description": "The username sent by the system administrator (mandatory if grant_type = 'password')",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "The password sent by the system administrator (mandatory if grant_type = 'password')",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Return the successfull message"
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "parameters": {
+        "Accept": {
+            "name": "Accept",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "default": "application/json"
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "oauth2",
+            "name": "Authorization",
+            "in": "header",
+            "flow": "password"
+        }
+    },
+    "security": [
+        {
+            "Bearer": [
+                "api-key"
+            ]
+        }
+    ]
+}
