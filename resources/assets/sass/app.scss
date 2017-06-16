@@ -100,10 +100,13 @@ body{
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #fff !important;
 }
+.navbar-toggle{
+  background-color: transparent !important;
+}
 
 .navbar-toggle:focus,.navbar-toggle:hover, .navbar-toggle:active {
-  background-color: $redColorDark !important;
+  background-color: transparent !important;
   .icon-bar{
-    background-color: white !important;
+    background-color: #fff !important;
   }
 }
