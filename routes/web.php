@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome2');
+    return view('welcome');
 });
 
 Route::get('/tcc/docs', function () {

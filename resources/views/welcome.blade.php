@@ -22,6 +22,8 @@
             font-weight: 100;
             height: 100vh;
             margin: 0;
+            overflow-x: hidden !important;
+            overflow-y: auto;
         }
 
         .full-height {
